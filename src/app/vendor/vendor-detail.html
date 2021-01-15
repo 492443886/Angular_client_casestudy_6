@@ -1,0 +1,91 @@
+<form [formGroup]="employeeForm">
+
+  <div layout="row" >
+    <mat-form-field flex>
+      <input matInput id = "name" placeholder="name" type="text" maxlength="30" required formControlName="name">
+      <mat-hint *ngIf="name.errors && (name.dirty || name.touched)" align="end" [ngStyle]="{'color': 'red'}"> name is required </mat-hint>
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field flex>
+      <input matInput id = "address1" placeholder="address1" type="text" required formControlName="address1">
+      <mat-hint *ngIf="address1.errors && (address1.dirty || address1.touched)" align="end" [ngStyle]="{'color': 'red'}"> address1 is required </mat-hint>
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field flex>
+      <input matInput id = "city" placeholder="city" type="text" required formControlName="city">
+      <mat-hint *ngIf="city.errors && (city.dirty || city.touched)" align="end" [ngStyle]="{'color': 'red'}"> city is required </mat-hint>
+
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field flex>
+      <mat-select id = "province" placeholder="Province" formControlName="province" value="province">
+        <mat-option [value]="" disabled selected>Province</mat-option>
+        <mat-option [value]="'NL'">NL</mat-option>
+        <mat-option [value]="'PE'">PE</mat-option>
+        <mat-option [value]="'NS'">NS</mat-option>
+        <mat-option [value]="'NB'">NB</mat-option>
+        <mat-option [value]="'QC'">QC</mat-option>
+        <mat-option [value]="'ON'">ON</mat-option>
+        <mat-option [value]="'MB'">MB</mat-option>
+        <mat-option [value]="'SK'">SK</mat-option>
+        <mat-option [value]="'AB'">AB</mat-option>
+        <mat-option [value]="'BC'">BC</mat-option>
+        <mat-option [value]="'YT'">YT</mat-option>
+        <mat-option [value]="'NT'">NT</mat-option>
+        <mat-option [value]="'NU'">NU</mat-option>
+      </mat-select>
+      <!--<input matInput placeholder="province" type="text" required formControlName="province">-->
+      <mat-hint *ngIf="province.errors && (province.dirty || province.touched)" align="end" [ngStyle]="{'color': 'red'}"> province is required </mat-hint>
+
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field flex>
+      <input matInput id = "postalcode"  placeholder="postalcode" type="email" required formControlName="postalcode">
+      <mat-hint *ngIf="postalcode.errors && (postalcode.dirty || postalcode.touched)" align="end" [ngStyle]="{'color': 'red'}">
+        <p *ngIf="postalcode.hasError('required')">Post Code is required.</p>
+        <p *ngIf="!postalcode.hasError('required') && postalcode.hasError('invalidPostCode')">valid format required - ### ###   <br/></p>
+      </mat-hint>
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field flex>
+      <input matInput id = "phone" placeholder="phone" type="email" required formControlName="phone">
+      <mat-hint *ngIf="phone.errors && (phone.dirty || phone.touched)" align="end" [ngStyle]="{'color': 'red'}">
+        <p *ngIf="phone.hasError('required')">Phone# is required.</p>
+        <p *ngIf="!phone.hasError('required') && phone.hasError('invalidPhone')">valid format required - (###)###-####   <br/></p>
+      </mat-hint>
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field flex>
+      <input matInput id = "type" placeholder="type" type="email" required formControlName="type">
+      <mat-hint *ngIf="type.errors && (type.dirty || type.touched)" align="end" [ngStyle]="{'color': 'red'}"> type is required </mat-hint>
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field flex>
+      <input matInput id = "email" placeholder="email" type="email" required formControlName="email">
+      <mat-hint *ngIf="email.errors && (email.dirty || email.touched)" align="end" [ngStyle]="{'color': 'red'}">
+        <p *ngIf="email.hasError('required')">Email# is required.</p>
+        <p *ngIf="!email.hasError('required') && email.hasError('invalidEmail')">valid format required - xx@xx.xx  <br/></p>
+      </mat-hint>
+    </mat-form-field>
+  </div>
+
+  <br/>
+
+  <div class="mat-pad-sm">
+    <span>
+      <button mat-raised-button id = "save" type="button" (click)="updateSelectedEmployee()" [disabled]=!employeeForm.valid> Save</button>
+    </span>
+    <button id = "delete" *ngIf="selectedEmployee.id" mat-raised-button type="button"
+            (click)="openDeleteModal(selectedEmployee)">Delete</button>
+    <span>
+      <button mat-raised-button type="button" (click)="cancelled.emit(selectedEmployee)">Cancel</button>
+    </span>
+  </div>
+</form>

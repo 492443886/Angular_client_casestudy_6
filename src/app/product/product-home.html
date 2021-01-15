@@ -1,0 +1,43 @@
+<mat-toolbar color="warn">
+  <span>Products</span>
+</mat-toolbar>
+
+<img class="logo" src="assets/img/logo.png" style="width: 40px; height: auto; margin-left: 47%">
+
+<mat-card *ngIf="hideEditForm">
+  <mat-card-header class="bgc-grey-00" layout="row">
+    <mat-card-title style="margin-bottom: 70px;">
+      <span class="mat-headline bgc-yellow-A200">{{ msg }}</span>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <app-expense-table [expenses]="expenses" (selected)="select($event)"
+                         (newed)="newExpense($event)">
+      </app-expense-table>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="!hideEditForm">
+  <mat-card-header class="bgc-grey-00" layout="row">
+    <mat-card-title>
+      <span class="mat-headline bgc-yellow-A200">{{ msg }}</span>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list flex>
+      <app-expense-detail [expense]="selectedExpense"
+                          [vendors]="vendors"
+                          [products]="expenses"
+                          (cancelled)="cancel('cancelled')"
+                          (saved)="save($event)"
+                          (deleted)="delete($event)">
+      </app-expense-detail>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+<mat-paginator #paginator
+               [length]="totalElements"
+               [pageSize]="5"
+               (page)="changePage($event)">
+</mat-paginator>

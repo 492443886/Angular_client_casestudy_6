@@ -1,0 +1,43 @@
+<mat-toolbar color="warn">
+  <span>INFO5059</span>
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-button [matMenuTriggerFor]="appMenu" align="end">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu #appMenu="matMenu">
+  <a mat-menu-item [routerLink]="['home']">home</a>
+  <a mat-menu-item [routerLink]="['vendor']">vendor</a>
+  <a mat-menu-item [routerLink]="['product']">product</a>
+  <a mat-menu-item [routerLink]="['generator']">generator</a>
+  <a mat-menu-item [routerLink]="['viewer']">viewer</a>
+</mat-menu>
+<router-outlet></router-outlet>
+
+<!--<mat-toolbar color="primary">-->
+  <!--<span>INFO5059</span>-->
+  <!--&lt;!&ndash; This fills the remaining space of the current row &ndash;&gt;-->
+  <!--<span style="flex: 1 1 auto;"></span>-->
+  <!--<button mat-button [matMenuTriggerFor]="appMenu" align="end">-->
+    <!--<mat-icon>menu</mat-icon>-->
+  <!--</button>-->
+<!--</mat-toolbar>-->
+<!--<mat-menu #appMenu="matMenu" xPosition="after">-->
+  <!--<button mat-menu-item>Example Entry 1</button>-->
+  <!--<button mat-menu-item>Example Entry 2</button>-->
+<!--</mat-menu>-->
+<!--<mat-card>-->
+  <!--<mat-card-header layout="row" layout-align="center center">-->
+    <!--<mat-card-title>-->
+      <!--<span class="mat-headline bgc-yellow-A200">{{ title }}</span>-->
+    <!--</mat-card-title>-->
+  <!--</mat-card-header>-->
+  <!--<mat-card-content>-->
+    <!--<div class="mat-title pad-sm">-->
+      <!--Some Interesting content will go here eventually-->
+    <!--</div>-->
+  <!--</mat-card-content>-->
+  <!--<mat-card-footer align="end" class="tc-purple-400 text-sm">-->
+    <!--<span class="pad-right-md">&copy;Info5059 - 2018</span>-->
+  <!--</mat-card-footer>-->
+<!--</mat-card>-->

@@ -1,0 +1,38 @@
+<table td-data-table style="top:-75px;position:relative;">
+  <tr td-data-table-row>
+    <th td-data-table-column (click)="sortExpenses('id')">
+      <span class="pad-left-sm">ID</span>
+      <mat-icon *ngIf="!sortOrder && sortedColumn === 'id';">arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="sortOrder && sortedColumn === 'id';">arrow_drop_up</mat-icon>
+      <mat-icon *ngIf="sortedColumn !== 'id';"></mat-icon>
+    </th>
+    <th td-data-table-column (click)="sortExpenses('name')">
+      Product Name
+      <mat-icon *ngIf="!sortOrder && sortedColumn === 'name';">arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="sortOrder && sortedColumn === 'name';">arrow_drop_up</mat-icon>
+      <mat-icon *ngIf="sortedColumn !== 'name';"></mat-icon>
+    </th>
+    <th td-data-table-column (click)="sortExpenses('vendor')">
+      Vendor
+      <mat-icon *ngIf="!sortOrder && sortedColumn === 'vendor';">arrow_drop_down</mat-icon>
+      <mat-icon *ngIf="sortOrder && sortedColumn === 'vendor';">arrow_drop_up</mat-icon>
+      <mat-icon *ngIf="sortedColumn !== 'vendor';"></mat-icon>
+    </th>
+  </tr>
+  <tr td-data-table-row *ngFor="let expense of expenses" (click)="selected.emit(expense)">
+    <td td-data-table-cell class="pad-none">
+      {{expense.id}}
+    </td>
+    <td td-data-table-cell>
+      {{expense.name}}
+    </td>
+    <td td-data-table-cell>
+      {{expense.vendor}}
+    </td>
+  </tr>
+</table>
+<div class="pad-sm">
+  <mat-icon (click)="newed.emit()" matTooltip="Add New Expense" color="primary" class="md-36">
+    control_point
+  </mat-icon>
+</div>

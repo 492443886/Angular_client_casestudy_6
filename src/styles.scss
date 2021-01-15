@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber';
+@import '~@angular/material/_theming';
+// Include non-theme styles for core.
+@include mat-core();
+mat-toolbar-row {
+  justify-content: space-between;
+}
+mat-list-item:nth-child(odd){
+  background-color:#89d7dd;
+}
+mat-list-item:nth-child(even) {
+  background-color:#a9dd89;
+}
+.logo{
+  width: 100%;
+}
+
+tr:nth-child(odd){ background-color:white; }
+tr:nth-child(even) {background-color: #eeeeee; }
+
+.custommodal {
+  mat-dialog-container {
+    background-color: white;
+    color: #311B92;
+    font-weight: bold;
+  }
+}
+#deleteNo, #deleteYes {
+  background-color: #311B92;
+  color: white;
+}
+
